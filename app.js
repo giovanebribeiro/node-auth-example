@@ -5,10 +5,51 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config=require('./config/config.js');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var config=require('./config/config.js');
+
+/**********************
+ *** BANCO DE DADOS ***
+ **********************/
+var dbname=config.db.sgbd;
+var username='';
+var password='';
+var dbPort='';
+var host='';
+var database='';
+var url='';
+switch(dbname){
+	case 'mongo':
+		var opts={
+			server:{
+				socketOptions:{keepAlive:1}
+			}
+		};
+		username=config.db.username;
+		password=config.db.password;
+		dbPort=config.db.port;
+		host=config.db.host;
+		database=config.db.database;
+		url='mongodb://'+username+":"+password+"@"+host+":"+dbPort+"/"+database;
+		
+		var mongoose=require('mongoose');
+		mongoose.connect(url, opts);
+		break;
+	default:
+		throw new Error("Banco de dados desconhecido: "+dbname);
+		break;
+}
+
+
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
