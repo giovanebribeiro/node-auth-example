@@ -1,0 +1,5 @@
+/*
+ * Arquivo de configuração para o ambiente de desenvolvimento.
+ */
+module.exports={
+};
