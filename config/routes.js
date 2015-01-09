@@ -8,7 +8,17 @@ module.exports={
 	'/users':{
 		controller:'UsersController',
 		action:'index',
-	}
+	},
+
+	'/signin':{
+		controller:'LoginController',
+		action:'signin',
+	},
+
+	'/signup':{
+		controller:'LoginController',
+		action:'signup',
+	},
 };
 
 

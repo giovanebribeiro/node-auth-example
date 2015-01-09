@@ -32,7 +32,8 @@ switch(dbname){
 		host=config.db.host;
 		database=config.db.database;
 		url='mongodb://'+username+":"+password+"@"+host+":"+dbPort+"/"+database;
-		
+	
+		console.log(url);	
 		var mongoose=require('mongoose');
 		mongoose.connect(url, opts);
 		break;
