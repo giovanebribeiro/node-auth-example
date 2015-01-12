@@ -7,8 +7,6 @@ var bcrypt=require('bcrypt');
  * de documento. 
  */
 var schema=mongoose.Schema({
-	name: String,
-    	birth: Date,
 	auth:{
 		local:{
 			email:String,

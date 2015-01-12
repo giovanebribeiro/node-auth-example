@@ -10,6 +10,11 @@
   </head>
   <body>
   	<div class="container">
+		<!--Flash Message-->
+		{{#if message }}
+			<div class="alert alert-danger">{{message}}</div>
+		{{/if}}
+
 		{{{body}}}
 	</div>
   </body>
