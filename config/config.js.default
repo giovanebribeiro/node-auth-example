@@ -1,5 +1,10 @@
-/*
- * Arquivo de configuração para o ambiente de desenvolvimento.
- */
 module.exports={
-};
+	db:{
+		sgbd:'mongo',
+		username:'usuario',
+		password:'senha',
+		host:'host do mongolab',
+		port:porta de acesso,
+		database:'nome da base de dados',
+	}
+}

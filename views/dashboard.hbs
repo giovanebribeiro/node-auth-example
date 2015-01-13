@@ -5,9 +5,16 @@
 		<a href="/signout" class="btn btn-default btn-sm">Logout</a>
 
 		<div class="row">
-			
+		
+			<!--Local information-->	
 			<div class="col-sm-6">
 				<div class="well">
+					<h3><span class="fa fa-user"></span> Local</h3>
+					<p>
+						<strong>id</strong>: {{user._id}}<br/>
+						<strong>email</strong>: {{user.auth.local.email}}<br/>
+						<strong>password</strong>: {{user.auth.local.password}}<br/> 
+					</p>
 				</div>
 			</div>
 

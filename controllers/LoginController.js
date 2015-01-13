@@ -20,6 +20,11 @@ var LoginController={
 		failureRedirect:'/signin',
 		failureFlash: true
 	}),
+
+	signout: function(req,res){
+		req.logout(); // já fornecida pelo passport
+		res.redirect('/'); // redireciona para a raiz.
+	},
 };
 
 module.exports=LoginController;

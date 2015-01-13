@@ -29,6 +29,18 @@ module.exports={
 		controller:'LoginController',
 		action:'login',
 	},
+
+	'/dashboard':{
+		controller:'DashboardController',
+		action:'index',
+		policy:'isAuthenticated',
+	},
+
+	'/signout':{
+		controller:'LoginController',
+		action:'signout',
+		policy:'isAuthenticated',
+	},
 };
 
 
