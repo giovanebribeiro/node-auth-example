@@ -41,6 +41,16 @@ module.exports={
 		action:'signout',
 		policy:'isAuthenticated',
 	},
+
+	'/login/twitter':{
+		controller:'LoginController',
+		action:'twitter',
+	},
+
+	'/login/twitter/callback':{
+		controller:'LoginController',
+		action:'twitterCallback',
+	},
 };
 
 

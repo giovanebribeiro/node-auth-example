@@ -25,6 +25,13 @@ var LoginController={
 		req.logout(); // já fornecida pelo passport
 		res.redirect('/'); // redireciona para a raiz.
 	},
+
+	twitter: passport.authenticate('twitter'),
+
+	twitterCallback: passport.authenticate('twitter', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/',
+	}),
 };
 
 module.exports=LoginController;

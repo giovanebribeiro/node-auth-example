@@ -12,6 +12,12 @@ var schema=mongoose.Schema({
 			email:String,
     			password:String,
 		},
+    		twitter:{
+			id:String,
+    			token:String,
+    			displayName:String,
+    			username:String,
+		},
 	},
 });
 

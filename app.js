@@ -62,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  *** PASSPORT ***
  ****************/
 require('./lib/passport')(passport);
-app.use(require('express-session')({secret: 'qualquercoisaksadnckjadscdscdscndc'}));
+app.use(require('express-session')({secret: config.secret.cookie}));
 app.use(passport.initialize());
 app.use(passport.session());
 
