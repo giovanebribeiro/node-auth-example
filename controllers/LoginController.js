@@ -11,13 +11,13 @@ var LoginController={
 
 	cadastroUsuario:passport.authenticate('local-signup',{
 		successRedirect: '/dashboard', // em caso de sucesso, redirecione para esta rota.
-		failureRedirect: '/signup', // Em caso de falha, redirecione para esta rota
+		failureRedirect: '/local/signup', // Em caso de falha, redirecione para esta rota
 		failureFlash: true, //allow flash message
 	}),
 
 	login:passport.authenticate('local-signin',{
 		successRedirect:'/dashboard',
-		failureRedirect:'/signin',
+		failureRedirect:'/local/signin',
 		failureFlash: true
 	}),
 
@@ -26,7 +26,7 @@ var LoginController={
 		res.redirect('/'); // redireciona para a raiz.
 	},
 
-	twitter: passport.authenticate('twitter'),
+	twitterConnect: passport.authenticate('twitter'),
 
 	twitterCallback: passport.authenticate('twitter', {
 		successRedirect: '/dashboard',

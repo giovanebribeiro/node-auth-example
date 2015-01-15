@@ -10,11 +10,16 @@
 			<div class="col-sm-6">
 				<div class="well">
 					<h3><span class="fa fa-user"></span> Local</h3>
-					<p>
-						<strong>id</strong>: {{user._id}}<br/>
-						<strong>email</strong>: {{user.auth.local.email}}<br/>
-						<strong>password</strong>: {{user.auth.local.password}}<br/> 
-					</p>
+					{{#if user.auth.local.email}}
+						<p>
+							<strong>id</strong>: {{user._id}}<br/>
+							<strong>email</strong>: {{user.auth.local.email}}<br/>
+							<strong>password</strong>: {{user.auth.local.password}}<br/> 
+						</p>
+						<a href="/local/unlink" class="btn btn-default">Desassociar conta</a>
+					{{else}}
+						<a href="/local/link" class="btn btn-default">Cadastrar conta local</a>					
+					{{/if}}
 				</div>
 			</div>
 

@@ -5,31 +5,28 @@ module.exports={
 		action:'index',
 	},
 
-	'/users':{
-		controller:'UsersController',
-		action:'index',
-	},
 
-	'/signin':{
+	'/local/signin':{
 		controller:'LoginController',
 		action:'signin',
 	},
 
-	'/signup':{
+	'/local/signup':{
 		controller:'LoginController',
 		action:'signup',
 	},
 
-	'POST /signup':{
+	'POST /local/signup':{
 		controller:'LoginController',
 		action:'cadastroUsuario',
 	},
 
-	'POST /signin':{
+	'POST /local/signin':{
 		controller:'LoginController',
 		action:'login',
 	},
 
+	 
 	'/dashboard':{
 		controller:'DashboardController',
 		action:'index',
@@ -42,14 +39,44 @@ module.exports={
 		policy:'isAuthenticated',
 	},
 
-	'/login/twitter':{
+	'/twitter/connect':{
 		controller:'LoginController',
-		action:'twitter',
+		action:'twitterConnect',
 	},
 
-	'/login/twitter/callback':{
+	'/twitter/callback':{
 		controller:'LoginController',
 		action:'twitterCallback',
+	},
+
+	'/local/link':{
+		controller:'LoginController',
+		action:'localLink',
+		policy:'isAuthenticated',
+	},
+
+	'POST /local/link':{
+		controller:'LoginController',
+		action:'linkAccount',
+		policy:'isAuthenticated',
+	},
+
+	'/local/unlink':{
+		controller:'LoginController',
+		action:'unlinkAccount',
+		policy:'isAuthenticated',
+	},
+
+	'/twitter/link':{
+		controller:'LoginController',
+		action:'twitterLink',
+		policy:'isAuthenticated',
+	},
+
+	'/twitter/unlink':{
+		controller:'LoginController',
+		action:'twitterUnlink',
+		policy:'isAuthenticated',
 	},
 };
 
