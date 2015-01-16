@@ -32,6 +32,43 @@ var LoginController={
 		successRedirect: '/dashboard',
 		failureRedirect: '/',
 	}),
+	
+	localLink:function(req,res){
+		res.render('addAccount');
+	},
+	
+	linkAccount:passport.authenticate('local-signup',{
+		successRedirect:'/dashboard',
+		failureRedirect:'/local/link',
+	}),
+	
+	unlinkAccount:function(req,res){
+		var _user=req.user;
+		_user.auth.local.email=undefined;
+		_user.save(function(err){
+			if(err) throw err;
+			
+			res.redirect('/dashboard');
+		});
+	},
+	
+	linkTwitter:passport.authorize('twitter', {scope: 'email'}),
+	
+	linkTwitterCallback:passport.authorize('twitter', {
+		successRedirect:'/dashboard',
+		failureRedirect:'/',
+	}),
+	
+	unlinkTwitter:function(req,res){
+		var _user=req.user;
+		
+		_user.auth.twitter.id=undefined;
+		_user.save(function(err){
+			if(err) throw err;
+			
+			res.redirect('/dashboard');
+		});
+	},
 };
 
 module.exports=LoginController;

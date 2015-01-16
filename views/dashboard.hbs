@@ -27,12 +27,17 @@
 			<div class="col-sm-6">
 				<div class="well">
 					<h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
-					<p>
-						<strong>id</strong>: {{user.auth.twitter.id}}<br/>
-						<strong>token</strong>: {{user.auth.twitter.token}}<br/>
-						<strong>username</strong>: {{user.auth.twitter.username}}<br/>
-						<strong>displayName</strong>: {{user.auth.twitter.displayName}}<br/>
-					</p>
+					{{#if user.auth.twitter.id}}
+						<p>
+							<strong>id</strong>: {{user.auth.twitter.id}}<br/>
+							<strong>token</strong>: {{user.auth.twitter.token}}<br/>
+							<strong>username</strong>: {{user.auth.twitter.username}}<br/>
+							<strong>displayName</strong>: {{user.auth.twitter.displayName}}<br/>
+						</p>
+						<a href="/twitter/unlink" class="btn btn-info">Desconectar</a>
+					{{else}}
+						<a href="/twitter/link" class="btn btn-info">Conectar ao Twitter</a>
+					{{/if}}
 				</div>
 			</div>
 			
