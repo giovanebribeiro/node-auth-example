@@ -41,7 +41,23 @@
 				</div>
 			</div>
 			
-			
+			<!--Google Information-->
+			<div class="col-sm-6">
+				<div class="well">
+					<h3 class="text-danger"><span class="fa fa-google-plus"></span> Google</h3>
+					{{#if user.auth.google.id}}
+						<p>
+							<strong>id</strong>: {{user.auth.google.id}}<br/>
+							<strong>token</strong>: {{user.auth.google.token}}<br/>
+							<strong>email</strong>: {{user.auth.google.email}}<br/>
+							<strong>name</strong>: {{user.auth.google.name}}<br/>
+						</p>
+						<a href="/google/unlink" class="btn btn-danger">Desconectar</a>
+					{{else}}
+						<a href="/google/link" class="btn btn-danger">Conectar ao Google</a>
+					{{/if}}
+				</div>
+			</div>
 
 		</div>
 	</div>

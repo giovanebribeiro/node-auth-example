@@ -1,6 +1,15 @@
 var passport=require('passport');
 
 var LoginController={
+	/* GERAL */
+	
+	signout: function(req,res){
+		req.logout(); // já fornecida pelo passport
+		res.redirect('/'); // redireciona para a raiz.
+	},
+	
+	/* LOCAL AUTH */
+	
 	signin:function(req,res){
 		res.render('signin',{ message: req.flash('signinMessage') });
 	},
@@ -19,18 +28,6 @@ var LoginController={
 		successRedirect:'/dashboard',
 		failureRedirect:'/local/signin',
 		failureFlash: true
-	}),
-
-	signout: function(req,res){
-		req.logout(); // já fornecida pelo passport
-		res.redirect('/'); // redireciona para a raiz.
-	},
-
-	twitterConnect: passport.authenticate('twitter'),
-
-	twitterCallback: passport.authenticate('twitter', {
-		successRedirect: '/dashboard',
-		failureRedirect: '/',
 	}),
 	
 	localLink:function(req,res){
@@ -51,6 +48,15 @@ var LoginController={
 			res.redirect('/dashboard');
 		});
 	},
+
+	/* TWITTER AUTH */
+
+	twitterConnect: passport.authenticate('twitter', {scope: 'email'}),
+
+	twitterCallback: passport.authenticate('twitter', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/',
+	}),
 	
 	linkTwitter:passport.authorize('twitter', {scope: 'email'}),
 	
@@ -64,6 +70,33 @@ var LoginController={
 		
 		_user.auth.twitter.id=undefined;
 		_user.save(function(err){
+			if(err) throw err;
+			
+			res.redirect('/dashboard');
+		});
+	},
+	
+	/* GOOGLE AUTH */
+	
+	googleConnect:passport.authenticate('google', {scope:['profile', 'email']}),
+	
+	googleCallback: passport.authenticate('google',{
+		successRedirect:'/dashboard',
+		failureRedirect:'/',
+	}),
+	
+	googleLink: passport.authorize('google', {scope:['profile', 'email']}),
+	
+	googleLinkCallback: passport.authorize('google', {
+		successRedirect:'/dashboard',
+		failureRedirect:'/',
+	}),
+	
+	googleUnlink: function(req,res){
+		var user=req.user;
+		user.auth.google.token=undefined;
+		user.auth.google.id=undefined;
+		user.save(function(err){
 			if(err) throw err;
 			
 			res.redirect('/dashboard');

@@ -10,13 +10,25 @@ var schema=mongoose.Schema({
 	auth:{
 		local:{
 			email:String,
-    			password:String,
+    		password:String,
 		},
-    		twitter:{
+    	twitter:{
 			id:String,
-    			token:String,
-    			displayName:String,
-    			username:String,
+			token:String,
+			displayName:String,
+			username:String,
+		},
+		google:{
+			id:String,
+			token:String,
+			email:String,
+			name:String,
+		},
+		facebook:{
+			id:String,
+			token:String,
+			email:String,
+			name:String,
 		},
 	},
 });

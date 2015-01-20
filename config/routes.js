@@ -1,5 +1,8 @@
 module.exports={
 	// Caso o método da rota seja diferente de GET, utilizar o nome do método antes da rota (Ex: 'POST /nome/nome2')
+	
+	/* ROTAS GERAIS */
+	
 	'/':{
 		controller:'IndexController',
 		action:'index',
@@ -84,6 +87,36 @@ module.exports={
 	'/twitter/unlink':{
 		controller:'LoginController',
 		action:'unlinkTwitter',
+		policy:'isAuthenticated',
+	},
+	
+	/* GOOGLE AUTH */
+	
+	'/google/connect':{
+		controller:'LoginController',
+		action:'googleConnect',
+	},
+	
+	'/google/callback':{
+		controller:'LoginController',
+		action:'googleCallback',
+	},
+	
+	'/google/link':{
+		controller:'LoginController',
+		action:'googleLink',
+		policy:'isAuthenticated',
+	},
+	
+	'/google/link/callback':{
+		controller:'LoginController',
+		action:'googleLinkCallback',
+		policy:'isAuthenticated',
+	},
+	
+	'/google/unlink':{
+		controller:'LoginController',
+		action:'googleUnlink',
 		policy:'isAuthenticated',
 	},
 };
