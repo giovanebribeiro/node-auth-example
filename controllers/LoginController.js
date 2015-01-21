@@ -102,6 +102,33 @@ var LoginController={
 			res.redirect('/dashboard');
 		});
 	},
+	
+	/* FACEBOOK AUTH */
+	
+	facebookConnect:passport.authenticate('facebook', { scope: 'email' }),
+	
+	facebookCallback: passport.authenticate('facebook',{
+		successRedirect:'/dashboard',
+		failureRedirect:'/',
+	}),
+	
+	facebookLink: passport.authorize('facebook', { scope: 'email' }),
+	
+	facebookLinkCallback: passport.authorize('facebook', {
+		successRedirect:'/dashboard',
+		failureRedirect:'/',
+	}),
+	
+	facebookUnlink: function(req,res){
+		var user=req.user;
+		user.auth.facebook.token=undefined;
+		user.auth.facebook.id=undefined;
+		user.save(function(err){
+			if(err) throw err;
+			
+			res.redirect('/dashboard');
+		});
+	},
 };
 
 module.exports=LoginController;

@@ -18,7 +18,7 @@
 						</p>
 						<a href="/local/unlink" class="btn btn-default">Desassociar conta</a>
 					{{else}}
-						<a href="/local/link" class="btn btn-default">Cadastrar conta local</a>					
+						<a href="/local/link" class="btn btn-default">Conectar a uma conta local</a>					
 					{{/if}}
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 							<strong>username</strong>: {{user.auth.twitter.username}}<br/>
 							<strong>displayName</strong>: {{user.auth.twitter.displayName}}<br/>
 						</p>
-						<a href="/twitter/unlink" class="btn btn-info">Desconectar</a>
+						<a href="/twitter/unlink" class="btn btn-info">Desassociar conta</a>
 					{{else}}
 						<a href="/twitter/link" class="btn btn-info">Conectar ao Twitter</a>
 					{{/if}}
@@ -52,9 +52,27 @@
 							<strong>email</strong>: {{user.auth.google.email}}<br/>
 							<strong>name</strong>: {{user.auth.google.name}}<br/>
 						</p>
-						<a href="/google/unlink" class="btn btn-danger">Desconectar</a>
+						<a href="/google/unlink" class="btn btn-danger">Desassociar conta</a>
 					{{else}}
 						<a href="/google/link" class="btn btn-danger">Conectar ao Google</a>
+					{{/if}}
+				</div>
+			</div>
+			
+			<!--Facebook Information-->
+			<div class="col-sm-6">
+				<div class="well">
+					<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+					{{#if user.auth.facebook.id}}
+						<p>
+							<strong>id</strong>: {{user.auth.facebook.id}}<br/>
+							<strong>token</strong>: {{user.auth.facebook.token}}<br/>
+							<strong>email</strong>: {{user.auth.facebook.email}}<br/>
+							<strong>name</strong>: {{user.auth.facebook.name}}<br/>
+						</p>
+						<a href="/facebook/unlink" class="btn btn-primary">Desassociar conta</a>
+					{{else}}
+						<a href="/facebook/link" class="btn btn-primary">Conectar ao Facebook</a>
 					{{/if}}
 				</div>
 			</div>

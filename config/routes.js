@@ -119,4 +119,34 @@ module.exports={
 		action:'googleUnlink',
 		policy:'isAuthenticated',
 	},
+	
+	/* FACEBOOK AUTH */
+	
+	'/facebook/connect':{
+		controller:'LoginController',
+		action:'facebookConnect',
+	},
+	
+	'/facebook/callback':{
+		controller:'LoginController',
+		action:'facebookCallback',
+	},
+	
+	'/facebook/link':{
+		controller:'LoginController',
+		action:'facebookLink',
+		policy:'isAuthenticated',
+	},
+	
+	'/facebook/link/callback':{
+		controller:'LoginController',
+		action:'facebookLinkCallback',
+		policy:'isAuthenticated',
+	},
+	
+	'/facebook/unlink':{
+		controller:'LoginController',
+		action:'facebookUnlink',
+		policy:'isAuthenticated',
+	},
 };
